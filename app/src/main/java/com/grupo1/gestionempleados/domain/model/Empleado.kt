@@ -1,7 +1,7 @@
 package com.grupo1.gestionempleados.domain.model
 
 data class Empleado(
-    val dni: Number,
+    val dni: String,
     val nombres: String,
     val apellidos: String,
     val sexo: String,

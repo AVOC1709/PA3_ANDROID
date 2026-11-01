@@ -1,4 +1,6 @@
 package com.grupo1.gestionempleados.domain.usecase
 
-class GetEmpleadosUseCase {
+import com.grupo1.gestionempleados.domain.repository.EmpleadoRepository
+
+class GetEmpleadosUseCase(private val empleadoRepository: EmpleadoRepository) {
 }
