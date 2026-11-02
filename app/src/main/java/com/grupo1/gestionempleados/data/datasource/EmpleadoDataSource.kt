@@ -3,11 +3,16 @@ package com.grupo1.gestionempleados.data.datasource
 import com.grupo1.gestionempleados.domain.model.Cargo
 import com.grupo1.gestionempleados.domain.model.Empleado
 
+/*
+ * Fuente de datos en memoria de la aplicación.
+ * Guarda las listas de cargos y empleados mientras la app está abierta.
+ */
 object EmpleadoDataSource {
     /*
     * Lista de cargos
+    * Es mutable para que la vista de Cargos pueda registrar, modificar y eliminar.
      */
-    val cargos = listOf(
+    val cargos = mutableListOf(
         Cargo(codigo = "C01", nombre = "Desarrollador FullStack"),
         Cargo(codigo = "C02", nombre = "Diseñador UI/UX"),
         Cargo(codigo = "C03", nombre = "Gerente de Proyectos"),

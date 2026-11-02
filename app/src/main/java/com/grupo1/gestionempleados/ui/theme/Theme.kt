@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -33,11 +34,43 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+// Esquema de colores propio de la app en modo claro
+private val AppLightColorScheme = lightColorScheme(
+    primary = AzulPrincipal,
+    onPrimary = Color.White,
+    primaryContainer = AzulContenedor,
+    secondary = VerdeAzulado,
+    onSecondary = Color.White,
+    secondaryContainer = VerdeAzuladoContenedor,
+    tertiary = VerdeAzulado,
+    background = FondoClaro,
+    surface = FondoClaro,
+    surfaceVariant = TarjetaClara,
+    surfaceContainerHighest = TarjetaClara,
+    surfaceContainer = TarjetaClara,
+    error = RojoError
+)
+
+// Esquema de colores propio de la app en modo oscuro
+private val AppDarkColorScheme = darkColorScheme(
+    primary = AzulClaro,
+    primaryContainer = AzulOscuroContenedor,
+    secondary = VerdeAzuladoClaro,
+    tertiary = VerdeAzuladoClaro,
+    background = FondoOscuro,
+    surface = FondoOscuro,
+    surfaceVariant = TarjetaOscura,
+    surfaceContainerHighest = TarjetaOscura,
+    surfaceContainer = TarjetaOscura,
+    error = RojoErrorClaro
+)
+
 @Composable
 fun GestionEmpleadosTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    // Se desactiva para que la app use siempre sus propios colores
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -46,8 +79,8 @@ fun GestionEmpleadosTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> AppDarkColorScheme
+        else -> AppLightColorScheme
     }
 
     MaterialTheme(
